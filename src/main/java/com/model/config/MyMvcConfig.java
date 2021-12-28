@@ -13,7 +13,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/admin").setViewName("index");
         registry.addViewController("/index.html").setViewName("index");
-//        registry.addViewController("/main.html").setViewName("dashboard");
+        registry.addViewController("/main.html").setViewName("station/list");
     }
 
     //配置国际化地区解析器
