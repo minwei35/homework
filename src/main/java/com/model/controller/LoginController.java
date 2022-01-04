@@ -19,6 +19,10 @@ public class LoginController {
             //当用户名为admin且密码是123456的时候可以进入主页面
             session.setAttribute("LoginUser",username);
             return "redirect:/main.html";
+        }else if("test".equals(username) && "test".equals(password)){
+            //当用户名为admin且密码是123456的时候可以进入主页面
+            session.setAttribute("LoginUser",username);
+            return "redirect:/ipMapping";
         }else{
             //用户名或者密码错误的时候给出相应的错误提示,并且返回主页面
             model.addAttribute("msg","用户名或者密码输入错误");
