@@ -56,6 +56,7 @@
 									<th>id</th>
 									<th>station name</th>
 									<th>html path</th>
+									<th>station service</th>
 									<th>operate</th>
 								</tr>
 							</thead>
@@ -64,6 +65,7 @@
 									<td th:text="${station.getId()}"></td>
 									<td th:text="${station.getStationName()}"></td>
 									<td th:text="${station.getHtmlPath()}"></td>
+									<td th:text="${station.getServiceName()}"></td>
 									<td>
 										<a class="btn btn-sm btn-primary" th:href="@{'/station/'+${station.getId()}}">
 											edit

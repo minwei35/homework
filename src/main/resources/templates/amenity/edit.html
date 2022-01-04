@@ -46,25 +46,16 @@
 		<div th:replace="~{commons/common::topbar}"></div>
 		<div class="container-fluid">
 			<div class="row">
-				<div th:replace="~{commons/common::sidebar(active='station')}"></div>
+				<div th:replace="~{commons/common::sidebar(active='amenity')}"></div>
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-					<form method="post" th:action="@{'/station/'+${station.getId()}}" >
+					<form method="post" th:action="@{'/amenity/'+${amenity.getId()}}" >
 						<div class="form-group">
-							<label for="stationName">station name：</label>
-							<input type="text" name="stationName" th:value="${station.getStationName()}" class="form-control" id="stationName" placeholder="please input the station name">
+							<label for="location">location：</label>
+							<input type="text" name="location" th:value="${amenity.getLocation()}" class="form-control" id="location" placeholder="please input the location">
 						</div>
 						<div class="form-group">
-							<label for="htmlPath">htmlPath：</label>
-							<input type="text" name="htmlPath" th:value="${station.getHtmlPath()}" class="form-control" id="htmlPath" placeholder="please input the html path">
-						</div>
-						<div class="form-group">
-							<label th:each="stationService:${stationServices}">
-								<input type="checkbox"
-									   name="stationServices"
-									   th:value="${stationService.getId()}"
-									   th:checked="${station.getStationServiceList().contains(stationService)}"
-									   th:text="${stationService.getName()}"/>
-							</label>
+							<label for="name">name：</label>
+							<input type="text" name="name" th:value="${amenity.getName()}" class="form-control" id="name" placeholder="please input the name">
 						</div>
 						<button type="submit" class="btn btn-default">Submit</button>
 					</form>

@@ -20,7 +20,7 @@ public class LoginController {
             session.setAttribute("LoginUser",username);
             return "redirect:/main.html";
         }else if("test".equals(username) && "test".equals(password)){
-            //当用户名为admin且密码是123456的时候可以进入主页面
+            //当用户名为test且密码是test的时候可以进入映射页面
             session.setAttribute("LoginUser",username);
             return "redirect:/ipMapping";
         }else{

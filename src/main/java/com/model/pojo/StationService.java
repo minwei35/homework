@@ -4,15 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
-//站点信息
+//站点服务信息
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class StationHtml {
+public class StationService {
     private Integer id;
-    private String stationName;
-    private String htmlPath;
-    private List<StationService> stationServiceList;
+    private String location;
+    private String name;
+    private Amenity amenity;
 }
