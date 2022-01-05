@@ -27,6 +27,7 @@ public class IpMappingController {
         response.setCurrentIp(ipAddr);
         IpRule ipRule = ipMappingService.getIpMappingStationHtml(ipAddr);
         if (ipRule == null){
+            model.addAttribute("ipMapping", response);
             return "result/default";
         }
         StationHtml stationHtml = ipRule.getStationHtml();
