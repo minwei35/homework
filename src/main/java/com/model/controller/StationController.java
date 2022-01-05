@@ -2,6 +2,7 @@ package com.model.controller;
 
 import com.model.controller.request.StationHtmlRequest;
 import com.model.controller.response.StationHtmlResponse;
+import com.model.dao.AmenityDao;
 import com.model.dao.StationHtmlDao;
 import com.model.dao.StationServiceDao;
 import com.model.pojo.Amenity;
@@ -29,6 +30,8 @@ public class StationController {
     StationHtmlDao stationHtmlDao;
     @Autowired
     StationServiceDao stationServiceDao;
+    @Autowired
+    AmenityDao amenityDao;
 
     @RequestMapping("/stations")
     public String list(Model model) {
@@ -50,6 +53,8 @@ public class StationController {
     public String toAdd(Model model) {
         Collection<StationService> stationServices = stationServiceDao.getAllStationService();
         model.addAttribute("stationServices", stationServices);
+        Collection<Amenity> amenities = amenityDao.getAllAmenity();
+        model.addAttribute("amenities", amenities);
         //跳转到表单页面
         return "station/add";
     }
@@ -64,6 +69,10 @@ public class StationController {
             List<StationService> stationServiceList = Arrays.stream(request.getStationServices()).map(Integer::valueOf).map(stationServiceDao::getStationServiceById).collect(Collectors.toList());
             stationHtml.setStationServiceList(stationServiceList);
         }
+        if (request.getAmenity() != null){
+            Amenity amenityById = amenityDao.getAmenityById(request.getAmenity().getId());
+            stationHtml.setAmenity(amenityById);
+        }
         stationHtmlDao.save(stationHtml);
         return "redirect:/stations";
     }
@@ -73,6 +82,8 @@ public class StationController {
         StationHtml stationHtml = stationHtmlDao.getStationHtmlById(id);
         Collection<StationService> stationServices = stationServiceDao.getAllStationService();
         model.addAttribute("stationServices", stationServices);
+        Collection<Amenity> amenities = amenityDao.getAllAmenity();
+        model.addAttribute("amenities", amenities);
         model.addAttribute("station", stationHtml);
         //转向编辑页面
         return "station/edit";
@@ -87,6 +98,10 @@ public class StationController {
         if (request.getStationServices() != null && request.getStationServices().length > 0) {
             List<StationService> stationServiceList = Arrays.stream(request.getStationServices()).map(Integer::valueOf).map(stationServiceDao::getStationServiceById).collect(Collectors.toList());
             stationHtml.setStationServiceList(stationServiceList);
+        }
+        if (request.getAmenity() != null){
+            Amenity amenityById = amenityDao.getAmenityById(request.getAmenity().getId());
+            stationHtml.setAmenity(amenityById);
         }
         //进行dao层的修改操作
         stationHtmlDao.updateStationHtml(stationHtml);

@@ -19,11 +19,11 @@ public class StationServiceDao {
 
     static {
         stationService = new HashMap<>();
-        stationService.put(1001,new StationService(1001,"location 1","StationService 1", new Amenity(1001,"location 1","Amenity 1")));
-        stationService.put(1002,new StationService(1002,"location 2","StationService 2", new Amenity(1002,"location 2","Amenity 2")));
-        stationService.put(1003,new StationService(1003,"location 3","StationService 3", new Amenity(1003,"location 3","Amenity 3")));
-        stationService.put(1004,new StationService(1004,"location 4","StationService 4", new Amenity(1004,"location 4","Amenity 4")));
-        stationService.put(1005,new StationService(1005,"location 5","StationService 5", new Amenity(1005,"location 5","Amenity 5")));
+        stationService.put(1001,new StationService(1001,"location 1","StationService 1"));
+        stationService.put(1002,new StationService(1002,"location 2","StationService 2"));
+        stationService.put(1003,new StationService(1003,"location 3","StationService 3"));
+        stationService.put(1004,new StationService(1004,"location 4","StationService 4"));
+        stationService.put(1005,new StationService(1005,"location 5","StationService 5"));
     }
 
     //设置主键自增

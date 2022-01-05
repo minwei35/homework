@@ -15,4 +15,5 @@ public class StationHtml {
     private String stationName;
     private String htmlPath;
     private List<StationService> stationServiceList;
+    private Amenity amenity;
 }

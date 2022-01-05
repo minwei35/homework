@@ -57,13 +57,13 @@
 							<label for="name">name：</label>
 							<input type="text" name="name" th:value="${stationService.getName()}" class="form-control" id="name" placeholder="please input the name">
 						</div>
-						<div class="form-group">
+						<!--<div class="form-group">
 							<label>amenity：</label>
 							<select class="form-control" name="amenity.id" th:value="${stationService.getAmenity().getId()}" >
 								<option th:each="amenity:${amenities}" th:value="${amenity.getId()}" th:text="${amenity.getName()}" th:selected="${amenity.getId()==stationService.getAmenity().getId()}">
 								</option>
 							</select>
-						</div>
+						</div>-->
 						<button type="submit" class="btn btn-default">Submit</button>
 					</form>
 				</main>

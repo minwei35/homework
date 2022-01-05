@@ -10,6 +10,7 @@ public class StationHtmlResponse extends StationHtml {
     public StationHtmlResponse(StationHtml t) {
         this.setId(t.getId());
         this.setStationServiceList(t.getStationServiceList());
+        this.setAmenity(t.getAmenity());
         this.setHtmlPath(t.getHtmlPath());
         this.setStationName(t.getStationName());
     }

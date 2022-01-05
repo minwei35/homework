@@ -21,9 +21,6 @@ public class StationServiceController {
     @Autowired
     StationServiceDao stationServiceDao;
 
-    @Autowired
-    AmenityDao amenityDao;
-
     @RequestMapping("/stationServices")
     public String list(Model model){
         Collection<StationService> stationServices = stationServiceDao.getAllStationService();
@@ -34,8 +31,6 @@ public class StationServiceController {
     //get请求走这个添加方法
     @GetMapping("/stationService")
     public String toAdd(Model model){
-        Collection<Amenity> amenities = amenityDao.getAllAmenity();
-        model.addAttribute("amenities",amenities);
         //跳转到表单页面
         return "stationService/add";
     }
@@ -50,8 +45,6 @@ public class StationServiceController {
     @GetMapping("/stationService/{id}")
     public String toEdit(@PathVariable("id") Integer id,Model model){
         StationService stationService = stationServiceDao.getStationServiceById(id);
-        Collection<Amenity> amenities = amenityDao.getAllAmenity();
-        model.addAttribute("amenities",amenities);
         model.addAttribute("stationService", stationService);
         //转向编辑页面
         return "stationService/edit";
@@ -60,11 +53,6 @@ public class StationServiceController {
     @PostMapping("/stationService/{id}")
     public String edit(@PathVariable("id") Integer id, StationService stationService){
         stationService.setId(id);
-        if (stationService.getAmenity() != null){
-            Integer amenityId = stationService.getAmenity().getId();
-            Amenity amenity = amenityDao.getAmenityById(amenityId);
-            stationService.setAmenity(amenity);
-        }
         //进行dao层的修改操作
         stationServiceDao.updateStationService(stationService);
         return "redirect:/stationServices";

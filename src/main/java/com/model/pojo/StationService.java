@@ -12,5 +12,5 @@ public class StationService {
     private Integer id;
     private String location;
     private String name;
-    private Amenity amenity;
+//    private Amenity amenity;
 }

@@ -2,6 +2,7 @@ package com.model;
 
 import com.model.dao.IpRuleDao;
 import com.model.pojo.IpRule;
+import com.model.pojo.StationHtml;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class IpMappingService {
 
     private final IpRuleDao ipRuleDao;
 
-    public String getIpMappingStationHtml(String ipAddr){
+    public IpRule getIpMappingStationHtml(String ipAddr){
         Map<String, IpRule> ipRuleMap = ipRuleDao.getAllIpRule().stream().collect(Collectors.toMap(IpRule::getIpRule, Function.identity(), (t1, t2) -> t1));
         int i = 4;
         String[] ipSplit = ipAddr.split("\\.");
@@ -27,10 +28,10 @@ public class IpMappingService {
             }
             String joinIp = String.join(".", ipSplit);
             if (ipRuleMap.containsKey(joinIp)){
-                return ipRuleMap.get(joinIp).getStationHtml().getHtmlPath();
+                return ipRuleMap.get(joinIp);
             }
             i--;
         }
-        return "default";
+        return null;
     }
 }
